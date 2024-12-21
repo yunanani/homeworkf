@@ -10,8 +10,8 @@ const App = () => {
   useEffect(() => {
     const getTrainingData = async () => {
       try {
-        const response = await axios.get('https://homework2-d5sm.onrender.com/api/Training');
-        setTraining(response.data);
+        const response_1 = await axios.get('https://homework2-d5sm.onrender.com/api/Training');
+        setTraining(response_1.data);
       } catch (error) {
         console.error('Error fetching training data: ', error);
       }
@@ -19,21 +19,17 @@ const App = () => {
     getTrainingData();
   }, []);
 
-  const fetchCompetitionData = async () => {
-    try {
-
-      const response = await axios.get('https://homework2-d5sm.onrender.com/api/Competition');
-
-      if (!response.ok) {
-        throw new Error('Competition API response was not ok');
+  useEffect(() => {
+    const getCompetitionData = async () => {
+      try {
+        const response_2 = await axios.get('https://homework2-d5sm.onrender.com/api/Compotition');
+        setCompetition(response_2.data);
+      } catch (error) {
+        console.error('Error fetching competition data: ', error);
       }
-
-      const data = await response.json();
-      setCompetition(data);
-    } catch (error) {
-      console.error('Error fetching competition data: ', error);
-    }
-  };
+    };
+    getCompetitionData();
+  }, []);
 
   useEffect(() => {
     fetchCompetitionData();
