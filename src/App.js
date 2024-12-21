@@ -31,10 +31,6 @@ const App = () => {
     getCompetitionData();
   }, []);
 
-  useEffect(() => {
-    fetchCompetitionData();
-  }, []);
-
   return (
     <>
       <div className="header-container">
