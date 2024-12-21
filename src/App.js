@@ -9,7 +9,7 @@ const App = () => {
   const fetchTrainingData = async () => {
     try {
       const trainingApiUrl = process.env.REACT_APP_TRAINING_API_URL || 'https://homework2-d5sm.onrender.com/api/Training';
-      const response = await fetch(trainingApiUrl);
+      const response = await axios.get(trainingApiUrl);
 
       if (!response.ok) {
         throw new Error('Training API response was not ok');
@@ -29,7 +29,7 @@ const App = () => {
   const fetchCompetitionData = async () => {
     try {
       const competitionApiUrl = process.env.REACT_APP_COMPETITION_API_URL || 'https://homework2-d5sm.onrender.com/api/Competition';
-      const response = await fetch(competitionApiUrl);
+      const response = await axios.get(competitionApiUrl);
 
       if (!response.ok) {
         throw new Error('Competition API response was not ok');
