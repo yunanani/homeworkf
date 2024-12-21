@@ -7,24 +7,16 @@ const App = () => {
   const [training, setTraining] = useState([]);
   const [competition, setCompetition] = useState([]);
 
-  const fetchTrainingData = async () => {
-    try {
-
-      const response = await axios.get('https://homework2-d5sm.onrender.com/api/Training');
-
-      if (!response.ok) {
-        throw new Error('Training API response was not ok');
-      } 
-
-      const data = await response.json();
-      setTraining(data);
-    } catch (error) {
-      console.error('Error fetching training data: ', error);
-    }
-  };
-
   useEffect(() => {
-    fetchTrainingData();
+    const getTrainingData = async () => {
+      try {
+        const response = await axios.get('https://homework2-d5sm.onrender.com/api/Training');
+        setTraining(response.data);
+      } catch (error) {
+        console.error('Error fetching training data: ', error);
+      }
+    };
+    getTrainingData();
   }, []);
 
   const fetchCompetitionData = async () => {
